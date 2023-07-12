@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import {
   BoldLink,
   BoxContainer,
@@ -7,12 +7,15 @@ import {
   MutedLink,
   SubmitButton,
 } from "./common";
+import {createUserWithEmailAndPassword} from 'firebase/auth'
 import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
+import { auth } from "../../firebase-config";
 // import { GoogleOAuthProvider } from "@react-oauth/google";
 // import { GoogleLogin } from '@react-oauth/google';
 // import { FcGoogle } from "react-icons/fc";
 //loginform
+
 export function LoginForm(props) {
   const { switchToSignup } = useContext(AccountContext);
 // const pass=(googledata)=>{
@@ -21,11 +24,24 @@ export function LoginForm(props) {
 // const fail=(result)=>{
 //   console.log("result")
 // }
+
+
+const [loginEmail,setLoginEmail]=useState("")
+const [loginPassword,setLoginPassword]=useState("")
+
+const login=()=>{
+
+}
+const logout=()=>{
+
+}
   return (
     <BoxContainer>
       <FormContainer>
-        <Input type="email" placeholder="Email" style={{color:'black'}}/>
-        <Input type="password" placeholder="Password" />
+        <Input type="email" placeholder="Email" style={{color:'black'}}
+        onChange={e => setLoginEmail(e.target.value)}/>
+        <Input type="password" placeholder="Password" 
+        onChange={e => setLoginPassword(e.target.value)} />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
       <MutedLink href="#">Forget your password?</MutedLink>
