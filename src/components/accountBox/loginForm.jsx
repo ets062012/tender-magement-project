@@ -12,6 +12,7 @@ import { AccountContext } from "./accountContext";
 // import { GoogleOAuthProvider } from "@react-oauth/google";
 // import { GoogleLogin } from '@react-oauth/google';
 // import { FcGoogle } from "react-icons/fc";
+//loginform
 export function LoginForm(props) {
   const { switchToSignup } = useContext(AccountContext);
 // const pass=(googledata)=>{
