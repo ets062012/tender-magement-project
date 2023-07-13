@@ -39,7 +39,7 @@ export const Input = styled.input`
   border-bottom: 1.4px solid transparent;
   transition: all 200ms ease-in-out;
   font-size: 12px;
-
+  
   &::placeholder {
     color: black;
   }
