@@ -23,8 +23,8 @@ export function SignupForm(props) {
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
       <SubmitButton type="submit">Signup</SubmitButton>
-      <SubmitButton type="submit" style={{background:'white',color:'black'}}>continue with google</SubmitButton>
-          <SubmitButton type="submit" style={{background:'white',color:'black'}}>signup with phone number</SubmitButton>
+      <SubmitButton type="submit" style={{ background: 'white', color: 'black' }}>continue with google</SubmitButton>
+      <SubmitButton type="submit" style={{ background: 'white', color: 'black' }}>signup with phone number</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">
         Already have an account?
