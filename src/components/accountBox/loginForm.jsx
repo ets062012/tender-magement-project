@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import {
   BoldLink,
   BoxContainer,
@@ -7,10 +7,12 @@ import {
   MutedLink,
   SubmitButton,
 } from "./common";
-import {createUserWithEmailAndPassword} from 'firebase/auth'
+//import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { Marginer } from "../marginer";
-import { AccountContext } from "./accountContext";
-import { auth } from "../../firebase-config";
+import { AccountContext } from "../accountBox/accountContext";
+import { useAuth } from '../context/AuthContexts'
+//import { useNavigate } from 'react-router-dom'
+//import { auth } from "../../firebase-config";
 // import { GoogleOAuthProvider } from "@react-oauth/google";
 // import { GoogleLogin } from '@react-oauth/google';
 // import { FcGoogle } from "react-icons/fc";
@@ -18,36 +20,55 @@ import { auth } from "../../firebase-config";
 
 export function LoginForm(props) {
   const { switchToSignup } = useContext(AccountContext);
-// const pass=(googledata)=>{
-//   console.log("googledata")
-// }
-// const fail=(result)=>{
-//   console.log("result")
-// }
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const { login } = useAuth()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  //const navigate = useNavigate()
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    try {
+      setError(' ')
+      setLoading(true)
+      await login(emailRef.current.value, passwordRef.current.value)
+
+    }
+    catch {
+      setError('Failed to log in')
+    }
+    setLoading(false)
+
+  }
+  // const pass=(googledata)=>{
+  //   console.log("googledata")
+  // }
+  // const fail=(result)=>{
+  //   console.log("result")
+  // }
 
 
-const [loginEmail,setLoginEmail]=useState("")
-const [loginPassword,setLoginPassword]=useState("")
+  const [loginEmail, setLoginEmail] = useState("")
+  const [loginPassword, setLoginPassword] = useState("")
 
-const login=()=>{
+  const logout = () => {
 
-}
-const logout=()=>{
-
-}
+  }
   return (
     <BoxContainer>
-      <FormContainer>
-        <Input type="email" placeholder="Email" style={{color:'black'}}
-        onChange={e => setLoginEmail(e.target.value)}/>
-        <Input type="password" placeholder="Password" 
-        onChange={e => setLoginPassword(e.target.value)} />
+      <FormContainer >
+        <Input type="email" placeholder="Email" style={{ color: 'black' }}
+          onChange={e => setLoginEmail(e.target.value)} required />
+        <Input type="password" placeholder="Password"
+          onChange={e => setLoginPassword(e.target.value)} required />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
-      <MutedLink href="#">Forget your password?</MutedLink>
+      <MutedLink href="../accountBox/ForgotPassword.jsx">Forget your password?</MutedLink>
       <Marginer direction="vertical" margin="1.6em" />
-      <SubmitButton type="submit">Signin</SubmitButton>
-             
+      <SubmitButton onClick={handleSubmit} type="button">{!loading ? "Signin" : "loading"}</SubmitButton>
+
       {/* <GoogleOAuthProvider >
             
               <GoogleLogin
@@ -71,13 +92,13 @@ const logout=()=>{
            
             
           </GoogleOAuthProvider> */}
-          {/* <button type="button" style={{}}> sign in with google 
+      {/* <button type="button" style={{}}> sign in with google 
           </button> */}
-          <SubmitButton type="submit" style={{background:'white',color:'black'}}>continue with google</SubmitButton>
-          <SubmitButton type="submit" style={{background:'white',color:'black'}}>signin with phone number</SubmitButton>
+      <SubmitButton type="submit" style={{ background: 'white', color: 'black' }}>continue with google</SubmitButton>
+      <SubmitButton type="submit" style={{ background: 'white', color: 'black' }}>signin with phone number</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">
-        Don't have an accoun?{" "}
+        Don't have an account?{" "}
         <BoldLink href="#" onClick={switchToSignup}>
           Signup
         </BoldLink>

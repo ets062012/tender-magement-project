@@ -8,7 +8,7 @@ import {
   SubmitButton,
 } from "./common";
 import { Marginer } from "../marginer";
-import { AccountContext } from "./accountContext";
+import { AccountContext } from "../accountBox/accountContext";
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from "../../firebase-config";
 
