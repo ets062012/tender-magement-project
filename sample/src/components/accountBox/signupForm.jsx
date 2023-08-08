@@ -63,8 +63,7 @@ export function SignupForm(props) {
   padding: '10px 10px',
   borderRadius: '5px',
   margin: '10px 0px',
-  borderColor:'transparent',
-  cursor: "pointer"}}>Signup</button>
+  borderColor:'transparent'}}>Signup</button>
       <Link to='/phoneSignup'>
       <button type="submit" style={{ backgroundColor:' #783584',
   color:'white',
@@ -74,8 +73,7 @@ export function SignupForm(props) {
   padding: '10px 10px',
   borderRadius: '5px',
   margin: '10px 0px',
-  borderColor:'transparent',
-  cursor: "pointer" }}>signup with phone number</button>
+  borderColor:'transparent' }}>signup with phone number</button>
       </Link>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#"style={{color:'black'}}>

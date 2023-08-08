@@ -56,7 +56,6 @@ const ProfileDash = () => {
     }
 
     const navigate = useNavigate()
-
     const handleProfile = () => {
         navigate('/profile')
     }

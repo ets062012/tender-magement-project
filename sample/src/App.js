@@ -14,8 +14,6 @@ import Dashboard from "./components/pages/Dashboard2";
 import { ResetPassword } from "./components/accountBox/ForgotPassword";
 // import AdminProFile from "./components/pages/AdminProFile";
 import ProfileAdmin from "./components/pages/ProfileAdmin";
-import Shop from "./components/pages/shop"
-import Deatail from "./components/pages/Detail";
 
 // const AppContainer = styled.div`
 //   width: 100%;
@@ -38,15 +36,12 @@ function App() {
         <Routes>
 
           <Route exact path="/" element={<Login />} />
-
           <Route exact path="/profile" element={<Protected><ProfileAdmin /></Protected>} />
-          <Route exact path="/ProfileDash" element={<ProfileDash />} />
           <Route exact path="/phoneSignUp" element={<PhoneSignUp />} />
-          <Route path="/shop" exact element={<Shop />}></Route>
-          <Route path="/detail/:id" exact element={<Deatail />}></Route>
+
           <Route exact path="/account" element={<Protected><Dashboard /></Protected>} />
           <Route exact path="/forgot" element={<ResetPassword />} />
-
+          <Route exact path="/ProfileDash" element={<ProfileDash />} />
 
         </Routes>
 
