@@ -191,7 +191,7 @@ const ProfileDash = () => {
 
                                 <div className='edit-btn'>
 
-                                    <button className='btn' onClick={handleProfile}>Edit picture</button>
+                                    <button className='btn' onClick={handleProfile}>Edit profile</button>
                                 </div>
 
                             </div>
